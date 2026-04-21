@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Design Patterns | Object Oriented Design</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="title" content="Design Patterns" />
+	<meta name="author" content="oodesign" />
+	<meta name="description"
+		content="Design Patterns are reusable solutions to commonly occuring problems. Design patterns were started as best practices that were applied again and again to similar problems encountered in different contexts." />
+	<meta name="keywords"
+		content="Design Patterns, Object Oriented Design, Java, C#" />
+	<meta name="Generator" content="Joomla! - Copyright (C) 2005 - 2006 Open Source Matters. All rights reserved." />
+	<meta name="robots" content="index, follow" />
+	<base href="https://www.oodesign.com/" />
+	<link rel="canonical" href="https://www.oodesign.com/" />
+
+	<link rel="shortcut icon" href="https://www.oodesign.com/images/favicon.ico" />
+	<link rel="amphtml" href="https://www.oodesign.com/amp/">
+
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Design Patterns">
+	<meta property="og:description"
+		content="Design Patterns are reusable solutions to commonly occuring problems. Design patterns were started as best practices that were applied again and again to similar problems encountered in different contexts.">
+	<meta property="og:url" content="https://www.oodesign.com/" />
+
+	<meta property='og:type' content='article' />
+	<meta property="og:article:section" content="Design Patterns" />
+	<meta property="og:article:tag"
+		content="Design Patterns, Object Oriented Design, Java, C#" />
+
+	<meta property="og:image" content="https://oodesign.com/images/creational-patterns.png">
+	<meta property="og:image:type" content="image/png">
+	<meta property="og:image:width" content="1221">
+	<meta property="og:image:height" content="726">
+	<meta property="og:image:alt" content="Diagram of Design Patterns(High Level)">
+
+	<meta property="og:site_name" content="OODesign.com: Object Oriented Design ">
+
+
+
+	<!--base href="https://www.oodesign.com/" /-->
+	<link rel="shortcut icon" href="https://www.oodesign.com/images/favicon.ico" />
+	<link rel="amphtml" href="https://www.oodesign.com/amp/creational-patterns/">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"
+		as="style" onload="this.rel='stylesheet'">
+	<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" media="none" onload="if(media!='all')media='all'"-->
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+		onload="hljs.initHighlightingOnLoad();"></script>
+	<!--link rel='stylesheet' href='static/style.css' type='text/css' media='all' onload="if(media!='all')media='all'" /-->
+	<link rel="preload" href="/static/style.css" as="style" onload="this.rel='stylesheet'">
+	<link rel="stylesheet" type="text/css" href="https://www.oodesign.com/templates/oodesign7/highslide/highslide.css" />
+	<style type="text/css">
+		body {
+			font-size: 1rem;
+			font-family: Verdana;
+			color: #222;
+			margin: 0;
+			background: #D9E2D7;
+		}
+
+		.header {
+
+			background-image: url(https://www.oodesign.com/templates/oodesign7/images/oo-design-header.jpg);
+			height: 80px;
+		}
+
+		.container {
+			margin: 0 auto;
+		}
+
+		.column-left {
+			float: left;
+			width: 178px;
+			padding-right: 5px;
+
+		}
+
+		.column-center {
+			float: left;
+
+		}
+
+		.column-right {
+			float: left;
+			width: 172px;
+			padding-left: 5px;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.container {
+			width: 1297px;
+		}
+
+		.column-center {
+			width: 850px;
+		}
+
+		.column-left {
+			width: 254px;
+		}
+
+
+		.tbl {
+			margin-top: 5px;
+			padding: 5px;
+			border: 1px solid #73786B;
+			background: #D9DBD2;
+			color: #000000;
+		}
+
+		.column-module {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-bottom: 3px;
+			border: 1px solid #73786B;
+			background: #B7CBD5;
+			line-height: 1.5;
+		}
+
+
+		.column-module-header {
+			background-color: #007a98;
+			border-bottom: 1px solid #000000;
+			color: #ffffff;
+			font-weight: bold;
+			padding-top: 3px;
+			vertical-align: middle;
+			text-align: left;
+			padding-left: 15px;
+			min-height: 18px;
+		}
+
+		a:link,
+		a:visited {
+			color: #000000;
+		}
+
+		@media only screen and (max-width : 990px),
+		only screen and (max-device-width : 990px) {
+			.container {
+				width: 100%;
+			}
+
+			.column-center {
+				width: 100%;
+			}
+
+			.column-left {
+				display: none;
+				position: fixed;
+			}
+
+			.column-right {
+				width: 100%;
+				padding-left: 0;
+			}
+
+			.column-module-header {
+				min-height: 30px;
+			}
+
+			.menu-button {
+				display: inline-block;
+			}
+
+			.closebtn {
+				display: block;
+			}
+
+
+		}
+
+		@media only screen and (max-width : 720px),
+		only screen and (max-device-width : 720px) {
+			.container {
+				width: 100%;
+			}
+
+			.column-center {
+				width: 100%;
+			}
+
+			.column-left {
+				display: none;
+				position: fixed;
+			}
+
+			.column-right {
+				width: 100%;
+				padding-left: 0;
+			}
+
+			.column-module-header {
+				min-height: 30px;
+			}
+
+			.menu-button {
+				display: inline-block;
+			}
+
+			.closebtn {
+				display: block;
+			}
+		}
+
+
+
+		pre {
+			overflow-x: auto;
+		}
+	</style>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-4452501840155972",
+			enable_page_level_ads: true
+		});
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+		</div>
+		<div class="row">
+			<div class="column-left" id="column-left">
+				<div class="column-module">
+					<div class="column-module-header">
+						Main Menu
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					</div>
+					<ul>
+						<li><a href="https://www.oodesign.com/" class="mainlevel">Home</a></li>
+						<li><a href="https://www.oodesign.com/design-principles"><b>Design Principles</b></a></li>
+						<li>
+							<ul>
+								<li><a href="https://www.oodesign.com/single-responsibility-principle"><b>S</b>ingle
+										Responsibility Principle</a></li>
+								<li><a href="https://www.oodesign.com/open-closed-principle"><b>O</b>pen Closed
+										Principle</a></li>
+								<li><a href="https://www.oodesign.com/liskov-s-substitution-principle"><b>L</b>iskov's
+										Substitution Principle</a></li>
+								<li><a href="https://www.oodesign.com/interface-segregation-principle"><b>I</b>nterface
+										Segregation Principle</a></li>
+								<li><a href="https://www.oodesign.com/dependency-inversion-principle"><b>D</b>ependency
+										Inversion Principle</a></li>
+							</ul>
+						</li>
+						<li class="selected" ><a href="https://www.oodesign.com/"><b>Design Patterns</b></a></li>		
+						<li>
+							<ul>
+								<li><a href="https://www.oodesign.com/creational-patterns"><b>Creational Patterns</b></a></li>
+								<li>
+									<ul>
+										<li><a href="https://www.oodesign.com/singleton-pattern">Singleton</a></li>
+										<li><a href="https://www.oodesign.com/factory-pattern">Factory</a></li>
+										<li><a href="https://www.oodesign.com/factory-method-pattern">Factory Method</a></li>
+										<li><a href="https://www.oodesign.com/abstract-factory-pattern">Abstract Factory</a></li>
+										<li><a href="https://www.oodesign.com/builder-pattern.html">Builder</a></li>
+										<li><a href="https://www.oodesign.com/prototype-pattern.html">Prototype</a></li>
+										<li><a href="https://www.oodesign.com/object-pool-pattern.html">Object Pool</a></li>
+									</ul>
+								</li>
+								<li><a href="https://www.oodesign.com/behavioral-patterns/"><b>Behavioral Patterns</b></a></li>
+								<li>
+									<ul>
+										<li><a href="https://www.oodesign.com/chain-of-responsibility-pattern.html">Chain of
+												Responsibility</a></li>
+										<li><a href="https://www.oodesign.com/command-pattern.html">Command</a></li>
+										<li><a href="https://www.oodesign.com/interpreter-pattern.html">Interpreter</a></li>
+										<li><a href="https://www.oodesign.com/iterator-pattern.html">Iterator</a></li>
+										<li><a href="https://www.oodesign.com/mediator-pattern.html">Mediator</a></li>
+										<li><a href="https://www.oodesign.com/memento-pattern.html">Memento</a></li>
+										<li><a href="https://www.oodesign.com/observer-pattern.html">Observer</a></li>
+										<li><a href="https://www.oodesign.com/strategy-pattern.html">Strategy</a></li>
+										<li><a href="https://www.oodesign.com/template-method-pattern.html">Template Method</a></li>
+										<li><a href="https://www.oodesign.com/visitor-pattern.html">Visitor</a></li>
+										<li><a href="https://www.oodesign.com/null-object-pattern.html">Null Object</a></li>
+									</ul>
+								</li>
+								<li><a href="https://www.oodesign.com/structural-patterns/" class="mainlevel"><b>Structural Patterns</b></a></li>
+								<li>
+									<ul>
+										<li><a href="https://www.oodesign.com/adapter-pattern.html">Adapter</a></li>
+										<li><a href="https://www.oodesign.com/bridge-pattern">Bridge</a></li>
+										<li><a href="https://www.oodesign.com/composite-pattern.html">Composite</a></li>
+										<li><a href="https://www.oodesign.com/decorator-pattern.html">Decorator</a></li>
+										<li><a href="https://www.oodesign.com/flyweight-pattern.html">Flyweight</a></li>
+										<li><a href="https://www.oodesign.com/proxy-pattern.html">Proxy</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div><!-- end column-left -->
+
+			<div class="column-center">
+				<div class="tbl">
+					<span class="menu-button" style="cursor:pointer;background-color:#007a98;color:white;"
+						onclick="openNav()"> &nbsp; &#9776; Menu &nbsp; </span> &nbsp;
+					<a href="https://www.oodesign.com/">Home: Design Patterns</a>
+				</div>
+
+
+				<div
+					style="float:right;padding:4px;margin:4px;border:1px solid #555;background-color:#B7CBD5;width:308px;min-height:250px;">
+
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- oodesign-resp-home1 -->
+					<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4452501840155972"
+						data-ad-slot="1137021394" data-ad-format="auto"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+
+				</div>
+
+				<div class="tbl">
+					<h1>Design Patterns</h1>
+
+					<div style="width:275px;height:20px;padding-bottom:15px;margin-left:3px;">
+						<div style="width:80px;height:20px;float:left;margin-right:15px;">
+						
+							<div id="fb-root"></div>
+							<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=268482860438265&autoLogAppEvents=1"></script>
+							<div class="fb-like" data-href="https://www.oodesign.com/" data-width="" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+					
+						</div>
+					
+					</div>					
+
+					<p>By definition, Design Patterns are reusable solutions to commonly occuring problems(in the context of software design). 
+						Design patterns were started as best practices that were applied again and again to similar problems encountered 
+						in different contexts. They become popular after they were collected, in a formalized form, in the Gang Of Four book 
+						in 1994. Originally published with c++ and smaltalk code samples, design patterns are very popular in Java and C# can be 
+						applied in all object oriented languanges. In functional languages like Scala, certain patterns are not necesary anymore.</p>
+
+
+				
+
+
+						<h2>Creational Design Patterns:</h2>
+
+
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/creational/singleton-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/singleton-pattern-preview.png" alt="Singleton Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/singleton-pattern.html">Singleton</a></strong> - <span class="intent">Ensure that only one instance of a class is created</span> and <span class="intent">Provide a global access point to the object.</span><br/>
+							</div>
+							
+							<span class="box"><a  class="head-a" href="javascript:void(0)"> When to Use </a></span>
+							,
+							<span class="box"><a  class="head-b" href="javascript:void(0)"> Common Usage </a></span>
+							,
+						
+							<span class="box">
+							<span class="label">Examples: </span><span class="value"><a href="https://www.oodesign.com/singleton-pattern.html#lazy-singleton">Lazy Singleton in Java</a></span></span>,
+						
+							<span class="box">
+							<span class="label">, </span><span class="value"><a href="https://www.oodesign.com/singleton-pattern.html#early-singleton">Early Singleton in Java</a></span></span>
+							</span>
+							
+							<div class="body-a">
+								Singleton pattern should be used when we must ensure that only one instance of a class is created and when the instance must be available through all the code. A special care should be taken in multi-threading environments when multiple threads must access the same resources through the same singleton object.
+							</div>
+							
+							<div class="body-b">
+								There are many common situations when singleton pattern is used:<br/>
+								- Logger Classes<br/>
+								- Configuration Classes<br/>
+								- Accesing resources in shared mode<br/>
+								- Other design patterns implemented as Singletons: Factories and Abstract Factories, Builder, Prototype<br/>
+							</div>	
+						
+						
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- oodesign-resp-home1 -->
+						
+						<script>
+						if (isMobi) document.write( '<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4452501840155972" data-ad-slot="1137021394" data-ad-format="auto"></ins>' );
+						</script>
+						
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+						
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/creational/factory-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/factory-pattern-preview.png" alt="Factory Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/factory-pattern.html">Factory</a></strong>(Simplified version of Factory Method) - <span class="intent">Creates objects without exposing the instantiation logic to the client</span> and <span class="intent">Refers to the newly created object through a common interface.</span>
+							</div>
+							
+							<span class="box"><a  class="head-a" href="javascript:void(0)"> When to Use </a></span>
+							,
+							<span class="box"><a  class="head-b" href="javascript:void(0)"> Common Usage </a></span>
+							
+							
+							<div class="body-a">
+								Factory pattern should be used when:
+								- a framework delegate the creation of objects derived from a common superclass to the factory
+								- we need flexibility in adding new types of objects that must be created by the class
+							</div>
+							
+							<div class="body-b">
+								Along with singleton pattern the factory is one of the most used patterns. Almost any application has some factories. Here are a some examples in java:<br/>
+								- factories providing an xml parser: javax.xml.parsers.DocumentBuilderFactory or javax.xml.parsers.SAXParserFactory <br/>
+								- java.net.URLConnection - allows users to decide which protocol to use<br/>
+							</div>		
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+									
+									
+									
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/creational/factory-method-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/factory-method-pattern-preview.png" alt="Factory Method" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Document Application Example<br/>
+								<a href="images/creational/factory-method-pattern-example.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/factory-method-pattern-example-preview.png" alt="Factory Method Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/factory-method-pattern.html">Factory Method</a></strong> - <span class="intent">Defines an interface for creating objects, but let subclasses to decide which class to instantiate</span> and <span class="intent">Refers to the newly created object through a common interface.</span>
+							</div>
+							
+							<span class="box"><a  class="head-a" href="javascript:void(0)"> When to Use </a></span>
+							,
+							<span class="box"><a  class="head-b" href="javascript:void(0)"> Common Usage </a></span>
+							
+							<div class="body-a">
+								Factory Method pattern should be used when:<br/>
+								- a framework delegate the creation of objects derived from a common superclass to the factory<br/>
+								- the base factory class does not know what concrete classes will be required to create
+								- delegates to its subclasses the creation of concrete objects<br/>
+								- factory subclasses subclasses are aware of the concrete classes that must be instantiated<br/><br/>
+								
+								Factory method pattern, compared to Factory pattern replace the factory with an abstract class and a set of concrete factories subclasses. The subclasses are responsible for creating concrete product objects; for factory method is possible adding new product classes without changing the abstract factory. The same result can be achieved for simplified factory pattern if reflection is used.
+							</div>
+							
+							<div class="body-b">
+								Along with singleton pattern the factories are the most used patterns. Almost any application has some factories. Here are a some examples:<br/>
+								- factories providing an xml parser: javax.xml.parsers.DocumentBuilderFactory or javax.xml.parsers.SAXParserFactory <br/>
+							</div>	
+							
+							<div class="clear"></div>
+							
+						</div>
+							
+							
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/creational/abstract-factory-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/abstract-factory-pattern-preview.png" alt="Abstract Factory" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Look &amp; Feel Example<br/>
+								<a href="images/creational/abstract-factory-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/abstract-factory-pattern-example-preview.png" alt="Abstract Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/abstract-factory-pattern.html">Abstract Factory</a></strong> - Offers the interface for creating a family of related objects, without explicitly specifying their classes.
+							</div>
+							
+							<span class="box"><a  class="head-a" href="javascript:void(0)"> When to Use </a></span>
+							,
+							<span class="box"><a  class="head-b" href="javascript:void(0)"> Common Usage </a></span>
+							,
+							<span class="box">
+							<span class="label">Example: </span><span class="value"><a href="https://www.oodesign.com/abstract-factory-pattern.html#look-and-feel-example">Gui Look &amp; Feel in Java</a></span>
+							</span>
+							
+							<div class="body-a">
+								Abstract Factory should be used when:
+								<ul>
+									<li>A system should be configured with one of multiple families of products</li>
+									<li>A system should be independent of how its products are created, composed and represented</li>
+									<li>Products from the same family should be used all together, products from different families ahould not be used togheter and this constraint must be ensured.
+									<li>Only the product interfaces are revealed, the implementations remains hidden to the clients.</li>
+								</ul>
+							</div>
+							
+							<div class="body-b">
+								Examples of abstract factories:
+								<ul>
+									<li>java.awt.Toolkit - the abstract superclass of all actual implementations of the Abstract Window Toolkit. Subclasses of Toolkit are used to bind the various components to particular native toolkit implementations(Java AWT).</li>
+									<li>javax.swing.LookAndFeel - an abstract swing factory to swithct between several look and feel for the components displayed(Java Swing).</li>
+									<li>java.sql.Connection - an abstract factory which create Statements, PreparedStatements, CallableStatements,... for each database flavor.</li>
+								</ul>
+							</div>		
+						
+							<div class="clear"></div>
+							
+						</div>
+								
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/creational/builder-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/builder-pattern-preview.png" alt="Builder Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+						
+							<span class="image-example">
+								Text Converter Example<br/>
+								<a href="images/creational/builder-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/builder-pattern-example-preview.png" alt="Builder Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/builder-pattern.html">Builder</a></strong> - Defines an instance for creating an object but letting subclasses decide which class to instantiate and Allows a finer control over the construction process.
+							</div>
+						
+							<span class="box">
+							<span class="label">Example: </span><span class="value"><a href="https://www.oodesign.com/builder-pattern.html#text-converting-example">Text Converter in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/creational/prototype-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/prototype-pattern-preview.png" alt="Highslide JS" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/prototype-pattern.html">Prototype</a></strong> - Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.
+							</div>
+						
+							
+							<div class="clear"></div>
+							
+						</div>
+								
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/creational/object-pool-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/object-pool-pattern-preview.png" alt="Object Pool" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Database Example<br/>
+								<a href="images/creational/object-pool-pattern-example.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/creational/object-pool-pattern-preview.png" alt="Object Pool Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+						
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/object-pool-pattern.html">Object Pool</a></strong> - reuses and shares objects that are expensive to create..
+							</div>
+							
+							<span class="box"><a  class="head-a" href="javascript:void(0)"> When to Use </a></span>
+							,
+							<span class="box"><a  class="head-b" href="javascript:void(0)"> Common Usage </a></span>
+							,
+							
+							
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="">Database Connection Pool in Java</a></span>
+							</span>
+							
+							<div class="body-a">
+								Basically, we'll use an object pool whenever there are several clients who needs the same stateless resource which is expensive to create.
+							</div>
+							
+							<div class="body-b">
+								The most common situations when object pool pattern is used:<br/>
+								- Database Connections<br/>
+								- Remote Objects<br/>
+							</div>	
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+						<h2>Behavioral Design Patterns:</h2>
+						
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/chain-of-responsibility-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/chain-of-responsibility-pattern-preview.png" alt="Chain of Responsibility" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/chain-of-responsibility-pattern.html">Chain of Responsibiliy</a></strong> -  It avoids attaching the sender of a request to its receiver, giving this way other objects the possibility of handling the request too.<BR/>
+								- The objects become parts of a chain and the request is sent from one object to another across the chain until one of the objects will handle it.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/command-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/command-pattern-preview.png" alt="Command Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Restaurant Example<br/>
+								<a href="images/behavioral/command-pattern-example.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/command-pattern-example-preview.png" alt="Command Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+						
+								<strong><a href="https://www.oodesign.com/command-pattern.html">Command</a></strong> - Encapsulate a request in an object, Allows the parameterization of clients with different requests and Allows saving the requests in a queue.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/command-pattern.html">Buying/Selling stocks in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/interpreter-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/interpreter-pattern-preview.png" alt="Interpreter Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/interpreter-pattern.html">Interpreter</a></strong> - Given a language, define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language / Map a domain to a language, the language to a grammar, and the grammar to a hierarchical object-oriented design
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/interpreter-pattern.html">Romans Numerals Converter in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/iterator-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/iterator-pattern-preview.png" alt="Iterator Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/iterator-pattern.html">Iterator</a></strong> - Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation. 
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/iterator-pattern.html">Java Iterator</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/mediator-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/mediator-pattern-preview.png" alt="Mediator Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/mediator-pattern.html">Mediator</a></strong> - Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/observer-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/observer-pattern-preview.png" alt="Observer Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								News Publisher Example<br/>
+								<a href="images/behavioral/observer-example-newspublisher-uml-class-diagram.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/observer-example-newspublisher-uml-class-diagram-preview.png" alt="Highslide JS" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/observer-pattern.html">Observer</a></strong> - Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/observer-pattern.html">News Publisher in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/strategy-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/strategy-pattern-preview.png" alt="Strategy Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Robot Example<br/>
+								<a href="images/behavioral/strategy-example-robot-uml-class-diagram.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/strategy-example-robot-uml-class-diagram-preview.png" alt="Highslide JS" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/strategy-pattern.html">Strategy</a></strong> - Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/strategy-pattern.html">Robot Application in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/template-method-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/template-method-pattern-preview.png" alt="Template Method" title="Click to enlarge"/>
+								</a>
+							</span>
+						
+							<span class="image-example">
+								Travel Example<br/>
+								<a href="images/behavioral/template-method-example-trips-uml-class-diagram.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/template-method-example-trips-uml-class-diagram-preview.png" alt="Highslide JS" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/template-method-pattern.html">Template Method</a></strong> - Define the skeleton of an algorithm in an operation, deferring some steps to subclasses / Template Method lets subclasses redefine certain steps of an algorithm without letting them to change the algorithm's structure.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/template-method-pattern.html">Travel Agency Application in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/visitor-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/visitor-pattern-preview.png" alt="Visitor Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Customers Example<br/>
+								<a href="images/behavioral/visitor-example-customers-uml-class-diagram.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/visitor-example-customers-uml-class-diagram-preview.png" alt="Visitor Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/visitor-pattern.html">Visitor</a></strong> - Represents an operation to be performed on the elements of an object structure / Visitor lets you define a new operation without changing the classes of the elements on which it operates.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/visitor-pattern-customers-report-java-sourcecode.html">Customers Report Example</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/behavioral/null-object-pattern.gif" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/behavioral/null-object-pattern-preview.png" alt="Null Object Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/null-object-pattern.html">Null Object</a></strong> - Provide an object as a surrogate for the lack of an object of a given type. / The Null Object Pattern provides intelligent do nothing behavior, hiding the details from its collaborators.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						
+						<h2>Structural Design Patterns:</h2>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/structural/adapter-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/adapter-pattern-preview.png" alt="Adapter Pattern" title="Click to enlarge"/>
+								</a>
+							</span>	
+						
+							<!-- span class="image-example">
+								Click to zoom<br/>
+								<a href="images/structural/adapter-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/adapter-pattern-example-preview.png" alt="Adapter Pattern" title="Click to enlarge"/>
+								</a>
+							</span -->	
+						
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/adapter-pattern.html">Adapter</a></strong> - Convert the interface of a class into another interface clients expect. / Adapter lets classes work together, that could not otherwise because of incompatible interfaces.
+							</div>
+						
+							<!-- span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/bridge-pattern-object-persistence-api-example-java-sourcecode.html">Object Persistence Api in Java</a></span>
+							</span -->
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/structural/bridge-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/bridge-pattern-preview.png" alt="Bridge Pattern" title="Click to enlarge"/>
+								</a>
+							</span>	
+						
+							<span class="image-example">
+								Click to zoom<br/>
+								<a href="images/structural/bridge-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/bridge-pattern-example-preview.png" alt="Bridge Pattern" title="Click to enlarge"/>
+								</a>
+							</span>	
+						
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/bridge-pattern.html">Bridge</a></strong> - Compose objects into tree structures to represent part-whole hierarchies. / Composite lets clients treat individual objects and compositions of objects uniformly.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/bridge-pattern-object-persistence-api-example-java-sourcecode.html">Object Persistence Api in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/structural/composite-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/composite-pattern-preview.png" alt="Composite Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Shapes Example<br/>
+								<a href="images/structural/composite-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/composite-pattern-example-preview.png" alt="Composite Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/composite-pattern.html">Composite</a></strong> - Compose objects into tree structures to represent part-whole hierarchies. / Composite lets clients treat individual objects and compositions of objects uniformly.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/composite-pattern-shapes-example-java-sourcecode.html">Shapes Example in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/structural/decorator-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/decorator-pattern-preview.png" alt="Decorator Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								GUI Example<br/>
+								<a href="images/structural/decorator-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/decorator-pattern-example-preview.png" alt="Decorator Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/decorator-pattern.html">Decorator</a></strong> - add additional responsibilities dynamically to an object.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/decorator-pattern-gui-example-java-sourcecode.html">Gui Application Example</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/structural/flyweight-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/flyweight-pattern-preview.png" alt="Flyweight Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Wargame Example<br/>
+								<a href="images/structural/flyweight-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/flyweight-pattern-example-preview.png" alt="Flyweight Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/flyweight-pattern.html">Flyweight</a></strong> - use sharing to support a large number of objects that have part of their internal state in common where the other part of state can vary.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/flyweight-pattern-wargame-example-java-sourcecode.html">Java Wargame Example</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/structural/memento-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/memento-pattern-preview.png" alt="Memento Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Calculator Example<br/>
+								<a href="images/structural/memento-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/memento-pattern-example-preview.png" alt="Memento Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/memento-pattern.html">Memento</a></strong> - capture the internal state of an object without violating encapsulation and thus providing a mean for restoring the object into initial state when needed.
+							</div>
+						
+							<span class="box">
+							<span class="label">Source Code: </span><span class="value"><a href="https://www.oodesign.com/memento-pattern-calculator-example-java-sourcecode.html">Calculator Example in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+						
+						<div class="item">
+						
+							<span class="image">
+								Click to zoom<br/>
+								<a href="images/structural/proxy-pattern.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/proxy-pattern-preview.png" alt="Proxy Pattern" title="Click to enlarge"/>
+								</a>
+							</span>
+							
+							<span class="image-example">
+								Image Viewer<br/>
+								<a href="images/structural/proxy-pattern-example.png" class="highslide"	onclick="return hs.expand(this)">
+									<img src="images/structural/proxy-pattern-example-preview.png" alt="Proxy Pattern Example" title="Click to enlarge"/>
+								</a>
+							</span>	
+							
+							<div class="prop"></div>
+							
+							<div class="description">
+								<strong><a href="https://www.oodesign.com/proxy-pattern.html">Proxy</a></strong> - provide a &#8220;Placeholder&#8221; for an object to control references to it.
+							</div>
+						
+							<span class="box">
+							<span class="label">Sourcecode: </span><span class="value"><a href="https://www.oodesign.com/proxy-pattern.html">Proxy Pattern in Java</a></span>
+							</span>
+							
+							<div class="clear"></div>
+							
+						</div>
+
+
+
+
+
+
+					<div style="max-width:1050px;margin:0 auto;">
+						<script type="text/javascript">
+							google_ad_client = "ca-pub-4452501840155972";
+							/* oodesign-leaderboard-principles */
+							google_ad_slot = "6030003693";
+							google_ad_width = 728;
+							google_ad_height = 90;
+							
+						</script>
+						<script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+					</div>
+
+
+
+
+
+
+
+
+
+
+					<div class="pagenav-container">
+						<span class="pagenav-left"><a href="https://www.oodesign.com/design-principles">&lt; Design Principles</a></span>
+						<span class="pagenav-right"><a href="https://www.oodesign.com/creational-patterns">Creational Patterns &gt;</a></span>
+						<div style="clear:both;"><!-- gg --></div>
+					</div>
+
+				</div>
+			</div><!--column-center end-->
+			<div class="column-right">
+				<div class="column-module">
+				</div>
+			</div>
+		</div><!-- row end -->
+	</div><!-- container end -->
+
+	<script>
+		function openNav() { document.getElementById("column-left").style.display = "block"; }
+		function closeNav() { document.getElementById("column-left").style.display = "none"; }
+	</script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+	<script type="text/javascript">$(document).ready(function(){  $(".body-a").hide();  $(".head-a").click(function() { 	$(this).parents(".item").find(".body-a").slideToggle(100); 	$(this).parents(".item").find(".body-b").slideUp(100); 	});  $(".body-b").hide();  $(".head-b").click(function() { 	$(this).parents(".item").find(".body-b").slideToggle(100); 	$(this).parents(".item").find(".body-a").slideUp(100); 	});  });</script>
+
+	<script async type="text/javascript" src="https://www.oodesign.com/templates/oodesign7/highslide/highslide.js"></script>
+	<script type="text/javascript">hs.graphicsDir = 'https://www.oodesign.com/templates/oodesign7/highslide/graphics/';</script>
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-648925-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-648925-1');
+	</script>
+
+
+
+</body>
+
+
+</html>
