@@ -47,3 +47,45 @@ spec:
       name: redis
     - image: oliver006/redis_exporter:latest
       name: adapter
+# Лабораторная 6: Паттерн Decorator
+
+## Код функции
+
+```python
+import random
+import json
+
+def random_name():
+    names = ["Alice", "Bob", "Charlie", "Diana"]
+    return random.choice(names)
+
+def handle(req):
+    obj = json.loads(req) if req else {}
+    
+    if not obj.get("name"):
+        obj["name"] = random_name()
+    if not obj.get("color"):
+        obj["color"] = "blue"
+    
+    return json.dumps(obj)
+  # Лабораторная 6: Паттерн Decorator
+
+## Реализация функции-декоратора
+
+```python
+import random
+import json
+
+def random_name():
+    names = ["Alice", "Bob", "Charlie", "Diana"]
+    return random.choice(names)
+
+def handle(req):
+    obj = json.loads(req) if req else {}
+    
+    if not obj.get("name"):
+        obj["name"] = random_name()
+    if not obj.get("color"):
+        obj["color"] = "blue"
+    
+    return json.dumps(obj)
